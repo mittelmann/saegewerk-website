@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mobiles Sägewerk Mustermann</title>
+  <meta name="description" content="Mobiles Sägewerk Mustermann - Schnittholz vor Ort, faire Preise, regionaler Service">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,8 +35,46 @@
       border-radius: 8px;
     }
     .card {
-      background-color: rgba(0,0,0,0.6);
+      background-color: rgba(0,0,0,0.75);
       color: #fff;
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+      z-index: 0;
+    }
+    /* Individuelle Hintergrundbilder für die Leistungskarten */
+    .card-holzschnitt::before {
+      background-image: url('images/holzschnitt.jpg');
+    }
+    .card-bauholz::before {
+      background-image: url('images/bauholz.jpg');
+    }
+    .card-feuerholz::before {
+      background-image: url('images/feuerholz.jpg');
+    }
+    .card-moebel::before {
+      background-image: url('images/moebel.jpg');
+    }
+    .card-body {
+      position: relative;
+      z-index: 1;
+    }
+    .about-section {
+      background: rgba(0,0,0,0.7);
+      padding: 3rem 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
     }
     footer {
       background: #212529;
@@ -59,6 +98,18 @@
       background-repeat: no-repeat;
       background-position: left center;
     }
+    .price-highlight {
+      color: #ffc107;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 3.0rem !important;
+    }
+    .card-title {
+      margin-bottom: 1.5rem;
+    }
+    .card-text:last-of-type {
+      margin-bottom: 0.5rem;
+    }
   </style>
 </head>
 
@@ -69,6 +120,7 @@
   <nav class="d-flex justify-content-between align-items-center">
     <div class="nav-banner"></div>
     <div>
+      <a href="#about" class="me-3 text-decoration-none">Über mich</a>
       <a href="#services" class="me-3 text-decoration-none">Leistungen</a>
       <a href="#gallery" class="me-3 text-decoration-none">Galerie</a>
       <a href="#video" class="me-3 text-decoration-none">Video</a>
@@ -90,35 +142,93 @@
   </div>
 </section>
 
+<!-- Über mich -->
+<section id="about" class="py-5">
+  <div class="container">
+    <div class="about-section">
+      <h3 class="mb-4">Über mich</h3>
+      <p class="lead">
+        Ich bin gelernter Tischler mit über 20 Jahren Erfahrung im Holzhandwerk. 
+        Vor fünf Jahren habe ich mir mit meinem mobilen Sägewerk einen Traum erfüllt: 
+        Holz dort zu verarbeiten, wo es wächst.
+      </p>
+      <p>
+        Mit Leidenschaft, Präzision und dem Blick fürs Detail verwandle ich Baumstämme 
+        in individuelle Hölzer – direkt vor Ort, nachhaltig und ganz nach Wunsch meiner Kunden.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- Leistungen -->
 <section id="services" class="py-5">
   <div class="container">
-    <h3>Unsere Leistungen</h3>
-    <div class="row g-3 mt-3">
-      <div class="col-md-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Brett- & Balkenschnitt</h5>
-            <p class="card-text">Schnittholz nach Maß: Dachlatten, Bohlen, Bauholz.</p>
+    <h3 class="mb-4">Unsere Leistungen</h3>
+    <div class="row g-4">
+      
+      <!-- Block 1: Mobiler Holzschnitt -->
+      <div class="col-md-6">
+        <div class="card h-100 card-holzschnitt">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Mobiler Holzschnitt – Präzision vor Ort</h5>
+            <p class="card-text">
+              Flexibler Holzzuschnitt aller Art – ganz nach Ihren individuellen Wünschen.
+            </p>
+            <ul class="mb-3">
+              <li>Maximaler Durchmesser: <strong>80 cm</strong></li>
+              <li>Maximale Länge: <strong>10,5 m</strong></li>
+              <li>Schnell, zuverlässig und direkt bei Ihnen vor Ort</li>
+            </ul>
+            <p class="price-highlight mt-auto">Stundenlohn: 52 € zzgl. Spesen</p>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Mobile Vor-Ort-Säge</h5>
-            <p class="card-text">Wir kommen mit unserer Maschine zu Ihnen – kein Transport nötig.</p>
+
+      <!-- Block 2: Bauholz -->
+      <div class="col-md-6">
+        <div class="card h-100 card-bauholz">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Verkauf von Bauholz, Brettern & Bohlen</h5>
+            <p class="card-text">
+              Verkauf von hochwertigem Bauholz, Brettern und Bohlen – Preise und Lagerbestand auf Anfrage.
+            </p>
+            <p class="card-text">
+              Individuelle Beratung und Auswahl direkt vom Lager.
+            </p>
+            <p class="price-highlight mt-auto">Preise auf Anfrage</p>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">Lagerung & Trocknung</h5>
-            <p class="card-text">Beratung zur Lagerung und Trocknung, um das Holz optimal zu erhalten.</p>
+
+      <!-- Block 3: Feuerholz -->
+      <div class="col-md-6">
+        <div class="card h-100 card-feuerholz">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Feuerholzverkauf – Fichte, Scheitlänge 1m</h5>
+            <p class="card-text">
+              Hochwertiges Fichten-Feuerholz, Scheitlänge 1 Meter.
+            </p>
+            <p class="card-text">
+              Anlieferung nach Absprache möglich.
+            </p>
+            <p class="price-highlight mt-auto">Preis: 75 € pro laufendem Meter</p>
           </div>
         </div>
       </div>
+
+      <!-- Block 4: Massivholzmöbel -->
+      <div class="col-md-6">
+        <div class="card h-100 card-moebel">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Massivholzmöbel nach Maß</h5>
+            <p class="card-text">
+              Verwirklichen Sie Ihre individuelle Massivholzmöbel-Idee mit mir – handwerkliche Qualität und persönlicher Service.
+            </p>
+            <p class="price-highlight mt-auto">Preise gerne nach Absprache</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -135,10 +245,10 @@
         <div class="carousel-item active">
           <div class="row g-2">
             <div class="col-12 col-md-6">
-              <img src="images/auto.jpeg" class="d-block w-100 gallery-img" alt="Bild 1">
+              <img src="images/auto.jpeg" class="d-block w-100 gallery-img" alt="Mobiles Sägewerk Fahrzeug">
             </div>
             <div class="col-12 col-md-6 d-none d-md-block">
-              <img src="images/seage-mathias-groß.jpeg" class="d-block w-100 gallery-img" alt="Bild 2">
+              <img src="images/seage-mathias-groß.jpeg" class="d-block w-100 gallery-img" alt="Sägewerk im Einsatz">
             </div>
           </div>
         </div>
@@ -146,10 +256,10 @@
         <div class="carousel-item">
           <div class="row g-2">
             <div class="col-12 col-md-6">
-              <img src="images/seage-mathias-groß.jpeg" class="d-block w-100 gallery-img" alt="Bild 2">
+              <img src="images/seage-mathias-groß.jpeg" class="d-block w-100 gallery-img" alt="Sägewerk im Einsatz">
             </div>
             <div class="col-12 col-md-6 d-none d-md-block">
-              <img src="images/feuerholz-klein.jpeg" class="d-block w-100 gallery-img" alt="Bild 3">
+              <img src="images/feuerholz-klein.jpeg" class="d-block w-100 gallery-img" alt="Frisch geschnittenes Feuerholz">
             </div>
           </div>
         </div>
@@ -157,10 +267,10 @@
         <div class="carousel-item">
           <div class="row g-2">
             <div class="col-12 col-md-6">
-              <img src="images/feuerholz-klein.jpeg" class="d-block w-100 gallery-img" alt="Bild 3">
+              <img src="images/feuerholz-klein.jpeg" class="d-block w-100 gallery-img" alt="Frisch geschnittenes Feuerholz">
             </div>
             <div class="col-12 col-md-6 d-none d-md-block">
-              <img src="images/saege-allein.jpeg" class="d-block w-100 gallery-img" alt="Bild 4">
+              <img src="images/saege-allein.jpeg" class="d-block w-100 gallery-img" alt="Mobile Säge">
             </div>
           </div>
         </div>
@@ -202,13 +312,12 @@
       <li>E-Mail: <strong><a href="mailto:info@saegewerk-mustermann.de">info@saegewerk-mustermann.de</a></strong></li>
       <li>Standort: Musterstraße 1, 12345 Musterstadt</li>
     </ul>
-    <form name="contact" method="POST" data-netlify="true" class="mt-3"  data-netlify="true" data-netlify-recaptcha="true">
+    <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="mt-3">
       <input type="hidden" name="form-name" value="contact">
       <div class="mb-2"><input class="form-control" name="name" placeholder="Ihr Name" required></div>
       <div class="mb-2"><input class="form-control" name="email" type="email" placeholder="E-Mail" required></div>
       <div class="mb-2"><textarea class="form-control" name="message" rows="4" placeholder="Nachricht" required></textarea></div>
-      <!-- WICHTIG: reCAPTCHA für Netlify  -->
-      <div data-netlify-recaptcha="true" ></div>
+      <div data-netlify-recaptcha="true"></div>
       <button class="btn btn-primary" type="submit">Nachricht senden</button>
     </form>
   </div>
