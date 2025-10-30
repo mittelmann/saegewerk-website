@@ -3,150 +3,258 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mobiles Sägewerk Mustermann</title>
-  <meta name="description" content="Mobiles Sägewerk Mustermann - Schnittholz vor Ort, faire Preise, regionaler Service">
+  <title>Sägenhaft - Mobiles Sägewerk</title>
+  <meta name="description" content="Mobiles Sägewerk - Verkauf & Holzschnitt vor Ort">
 
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Font: Playfair Display -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --primary-blue: #4a5f7a;
+      --secondary-orange: #c17940;
+      --dark-bg: #2c3e50;
+    }
+    
     body {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Roboto', sans-serif;
       color: #fff;
-      background-image: url('images/holz-bg.jpg');
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-bg) 100%);
+      min-height: 100vh;
+    }
+
+    .brand-title {
+      font-family: 'Alfa Slab One', cursive;
+      font-size: 3.5rem;
+      letter-spacing: 4px;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+      margin: 0;
+    }
+
+    .brand-subtitle {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .brand-tagline {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-top: 0.5rem;
+    }
+
+    header {
+      background-image: url('images/banner.png');
       background-size: cover;
+      background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    .hero {
-      background: rgba(0,0,0,0.5);
-      padding: 4rem 1rem;
-      text-align: center;
-      color: #fff;
-      border-radius: 8px;
-    }
-    .gallery-img {
-      object-fit: cover;
-      width: 100%;
-      height: 400px;
-      border-radius: 8px;
-    }
-    .card {
-      background-color: rgba(0,0,0,0.75);
-      color: #fff;
-      min-height: 300px;
+      background-color: var(--primary-blue);
+      padding: 2rem 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       position: relative;
-      overflow: hidden;
+      min-height: 300px;
     }
-    .card::before {
+
+    header::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0.2;
-      z-index: 0;
-    }
-    /* Individuelle Hintergrundbilder für die Leistungskarten */
-    .card-holzschnitt::before {
-      background-image: url('images/holzschnitt.jpg');
-    }
-    .card-bauholz::before {
-      background-image: url('images/bauholz.jpg');
-    }
-    .card-feuerholz::before {
-      background-image: url('images/feuerholz.jpg');
-    }
-    .card-moebel::before {
-      background-image: url('images/moebel.jpg');
-    }
-    .card-body {
-      position: relative;
+      background: linear-gradient(90deg, 
+        var(--primary-blue) 0%, 
+        rgba(74, 95, 122, 0.8) 10%,
+        transparent 25%, 
+        transparent 75%, 
+        rgba(74, 95, 122, 0.8) 90%,
+        var(--primary-blue) 100%);
       z-index: 1;
     }
-    .about-section {
-      background: rgba(0,0,0,0.7);
+
+    header .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        min-height: 200px;
+      }
+      header::before {
+        background: linear-gradient(90deg, 
+          var(--primary-blue) 0%, 
+          rgba(74, 95, 122, 0.7) 8%,
+          transparent 20%, 
+          transparent 80%, 
+          rgba(74, 95, 122, 0.7) 92%,
+          var(--primary-blue) 100%);
+      }
+    }
+
+    .hero {
+      background: rgba(0,0,0,0.6);
+      padding: 4rem 1rem;
+      text-align: center;
+      border-radius: 12px;
+      margin: 3rem 0;
+      border: 3px solid var(--secondary-orange);
+    }
+
+    .section-bg {
+      background: rgba(0,0,0,0.5);
       padding: 3rem 2rem;
-      border-radius: 8px;
+      border-radius: 12px;
       margin: 2rem 0;
+      border-left: 5px solid var(--secondary-orange);
     }
-    footer {
-      background: #212529;
+
+    .card {
+      background: linear-gradient(135deg, rgba(74, 95, 122, 0.9) 0%, rgba(44, 62, 80, 0.9) 100%);
+      border: 2px solid var(--secondary-orange);
+      border-radius: 12px;
       color: #fff;
-      padding: 2rem 0;
+      min-height: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    a {
-      color: #fff;
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(193, 121, 64, 0.4);
     }
-    a.btn-primary {
-      color: #fff;
-    }
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(200%) contrast(100%);
-    }
-    .nav-banner {
-      height: 60px;
-      background-image: url('images/banner.jpg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: left center;
-    }
-    .price-highlight {
-      color: #ffc107;
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-top: 3.0rem !important;
-    }
+
     .card-title {
+      color: var(--secondary-orange);
+      font-weight: 700;
+      font-size: 1.3rem;
       margin-bottom: 1.5rem;
     }
-    .card-text:last-of-type {
+
+    .price-highlight {
+      color: #ffd700;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 2px solid var(--secondary-orange);
+    }
+
+    .btn-primary {
+      background: var(--secondary-orange);
+      border: none;
+      font-weight: 700;
+      padding: 0.75rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: #d4894e;
+      transform: scale(1.05);
+    }
+
+    .btn-outline-secondary {
+      border: 2px solid #fff;
+      color: #fff;
+      font-weight: 700;
+      padding: 0.75rem 2rem;
+    }
+
+    .btn-outline-secondary:hover {
+      background: #fff;
+      color: var(--primary-blue);
+    }
+
+    .gallery-img {
+      object-fit: cover;
+      width: 100%;
+      height: 400px;
+      border-radius: 8px;
+      border: 3px solid var(--secondary-orange);
+    }
+
+    .contact-info {
+      background: var(--secondary-orange);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .contact-info li {
       margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background: var(--dark-bg);
+      color: #fff;
+      padding: 2rem 0;
+      margin-top: 4rem;
+      border-top: 3px solid var(--secondary-orange);
+    }
+
+    nav a {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--secondary-orange);
+    }
+
+    @media (max-width: 768px) {
+      .brand-title {
+        font-size: 2rem;
+      }
+      .brand-subtitle {
+        font-size: 1.2rem;
+      }
+      .brand-tagline {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- Header / Navigation -->
-<header class="container py-3">
-  <nav class="d-flex justify-content-between align-items-center">
-    <div class="nav-banner"></div>
-    <div>
-      <a href="#about" class="me-3 text-decoration-none">Über mich</a>
-      <a href="#services" class="me-3 text-decoration-none">Leistungen</a>
-      <a href="#gallery" class="me-3 text-decoration-none">Galerie</a>
-      <a href="#video" class="me-3 text-decoration-none">Video</a>
-      <a href="#contact" class="btn btn-sm btn-outline-light">Kontakt</a>
-    </div>
-  </nav>
-  <hr>
+<header>
+  <div class="container text-center">
+    <h1 class="brand-title">SÄGENHAFT</h1>
+    <h2 class="brand-subtitle">MOBILES SÄGEWERK</h2>
+    <p class="brand-tagline">Verkauf & Holzschnitt vor Ort</p>
+    <p class="mt-3 mb-2">Tel.: 0157-848144480</p>
+    <p class="mb-0">Matthias Ramm - 02708 Ottenhain - Waldstraße 15a</p>
+  </div>
 </header>
 
-<!-- Hero -->
+<div class="container">
+  <nav class="d-flex justify-content-center gap-4 py-3 flex-wrap">
+    <a href="#about">Über mich</a>
+    <a href="#services">Leistungen</a>
+    <a href="#gallery">Galerie</a>
+    <a href="#video">Video</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+</div>
+
 <section class="hero">
   <div class="container">
     <h2 class="display-6">Vor-Ort-Profi für Schnittholz & Balken</h2>
     <p class="lead">Wir kommen direkt zu Ihnen – faire Preise, regionaler Service.</p>
-    <p>
+    <p class="mt-4">
       <a href="#contact" class="btn btn-primary me-2">Anfrage stellen</a>
       <a href="#services" class="btn btn-outline-secondary">Mehr erfahren</a>
     </p>
   </div>
 </section>
 
-<!-- Über mich -->
 <section id="about" class="py-5">
   <div class="container">
-    <div class="about-section">
-      <h3 class="mb-4">Über mich</h3>
+    <div class="section-bg">
+      <h3 class="mb-4" style="color: var(--secondary-orange);">Über mich</h3>
       <p class="lead">
         Ich bin gelernter Tischler mit über 20 Jahren Erfahrung im Holzhandwerk. 
         Vor fünf Jahren habe ich mir mit meinem mobilen Sägewerk einen Traum erfüllt: 
@@ -160,71 +268,66 @@
   </div>
 </section>
 
-<!-- Leistungen -->
 <section id="services" class="py-5">
   <div class="container">
-    <h3 class="mb-4">Unsere Leistungen</h3>
+    <h3 class="mb-4 text-center" style="color: var(--secondary-orange);">Unsere Leistungen</h3>
     <div class="row g-4">
       
-      <!-- Block 1: Mobiler Holzschnitt -->
       <div class="col-md-6">
-        <div class="card h-100 card-holzschnitt">
+        <div class="card h-100">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">Mobiler Holzschnitt – Präzision vor Ort</h5>
             <p class="card-text">
-              Flexibler Holzzuschnitt aller Art – ganz nach Ihren individuellen Wünschen.
+              Holzzuschnitt aller Art – ganz nach Ihren individuellen Wünschen.
             </p>
             <ul class="mb-3">
               <li>Maximaler Durchmesser: <strong>80 cm</strong></li>
               <li>Maximale Länge: <strong>10,5 m</strong></li>
-              <li>Schnell, zuverlässig und direkt bei Ihnen vor Ort</li>
+              <li>Schnell, zuverlässig und direkt bei Ihnen</li>
             </ul>
-            <p class="price-highlight mt-auto">Stundenlohn: 52 € zzgl. Spesen</p>
+            <p class="price-highlight">Stundenlohn: 52 € zzgl. Spesen</p>
           </div>
         </div>
       </div>
 
-      <!-- Block 2: Bauholz -->
       <div class="col-md-6">
-        <div class="card h-100 card-bauholz">
+        <div class="card h-100">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">Verkauf von Bauholz, Brettern & Bohlen</h5>
             <p class="card-text">
-              Verkauf von hochwertigem Bauholz, Brettern und Bohlen – Preise und Lagerbestand auf Anfrage.
+              Hochwertiges Bauholz, Brettern und Bohlen – Preise und Lagerbestand auf Anfrage.
             </p>
             <p class="card-text">
               Individuelle Beratung und Auswahl direkt vom Lager.
             </p>
-            <p class="price-highlight mt-auto">Preise auf Anfrage</p>
+            <p class="price-highlight">Preise auf Anfrage</p>
           </div>
         </div>
       </div>
 
-      <!-- Block 3: Feuerholz -->
       <div class="col-md-6">
-        <div class="card h-100 card-feuerholz">
+        <div class="card h-100">
           <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Feuerholzverkauf – Fichte, Scheitlänge 1m</h5>
+            <h5 class="card-title">Brennholzverkauf</h5>
             <p class="card-text">
               Hochwertiges Fichten-Feuerholz, Scheitlänge 1 Meter.
             </p>
             <p class="card-text">
               Anlieferung nach Absprache möglich.
             </p>
-            <p class="price-highlight mt-auto">Preis: 75 € pro laufendem Meter</p>
+            <p class="price-highlight">Preis: 75 € pro laufendem Meter</p>
           </div>
         </div>
       </div>
 
-      <!-- Block 4: Massivholzmöbel -->
       <div class="col-md-6">
-        <div class="card h-100 card-moebel">
+        <div class="card h-100">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">Massivholzmöbel nach Maß</h5>
             <p class="card-text">
               Verwirklichen Sie Ihre individuelle Massivholzmöbel-Idee mit mir – handwerkliche Qualität und persönlicher Service.
             </p>
-            <p class="price-highlight mt-auto">Preise gerne nach Absprache</p>
+            <p class="price-highlight">Preise gerne nach Absprache</p>
           </div>
         </div>
       </div>
@@ -233,108 +336,314 @@
   </div>
 </section>
 
-<!-- Galerie -->
 <section id="gallery" class="py-5">
   <div class="container">
-    <h3>Galerie</h3>
-    <p class="text-muted"></p>
+    <div class="section-bg">
+      <h3 class="mb-4" style="color: var(--secondary-orange);">Galerie</h3>
 
-    <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
+      <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
 
-        <div class="carousel-item active">
-          <div class="row g-2">
-            <div class="col-12 col-md-6">
-              <img src="images/auto.jpeg" class="d-block w-100 gallery-img" alt="Mobiles Sägewerk Fahrzeug">
-            </div>
-            <div class="col-12 col-md-6 d-none d-md-block">
-              <img src="images/seage-mathias-groß.jpeg" class="d-block w-100 gallery-img" alt="Sägewerk im Einsatz">
+          <div class="carousel-item active">
+            <div class="row g-2">
+              <div class="col-12 col-md-6">
+                <img src="images/auto.jpeg" class="d-block w-100 gallery-img" alt="Mobiles Sägewerk Fahrzeug">
+              </div>
+              <div class="col-12 col-md-6 d-none d-md-block">
+                <img src="images/seage-mathias-groß.jpeg" class="d-block w-100 gallery-img" alt="Sägewerk im Einsatz">
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="carousel-item">
-          <div class="row g-2">
-            <div class="col-12 col-md-6">
-              <img src="images/seage-mathias-groß.jpeg" class="d-block w-100 gallery-img" alt="Sägewerk im Einsatz">
-            </div>
-            <div class="col-12 col-md-6 d-none d-md-block">
-              <img src="images/feuerholz-klein.jpeg" class="d-block w-100 gallery-img" alt="Frisch geschnittenes Feuerholz">
+          <div class="carousel-item">
+            <div class="row g-2">
+              <div class="col-12 col-md-6">
+                <img src="images/seage-mathias-groß.jpeg" class="d-block w-100 gallery-img" alt="Sägewerk im Einsatz">
+              </div>
+              <div class="col-12 col-md-6 d-none d-md-block">
+                <img src="images/feuerholz-klein.jpeg" class="d-block w-100 gallery-img" alt="Frisch geschnittenes Feuerholz">
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="carousel-item">
-          <div class="row g-2">
-            <div class="col-12 col-md-6">
-              <img src="images/feuerholz-klein.jpeg" class="d-block w-100 gallery-img" alt="Frisch geschnittenes Feuerholz">
-            </div>
-            <div class="col-12 col-md-6 d-none d-md-block">
-              <img src="images/saege-allein.jpeg" class="d-block w-100 gallery-img" alt="Mobile Säge">
+          <div class="carousel-item">
+            <div class="row g-2">
+              <div class="col-12 col-md-6">
+                <img src="images/feuerholz-klein.jpeg" class="d-block w-100 gallery-img" alt="Frisch geschnittenes Feuerholz">
+              </div>
+              <div class="col-12 col-md-6 d-none d-md-block">
+                <img src="images/saege-allein.jpeg" class="d-block w-100 gallery-img" alt="Mobile Säge">
+              </div>
             </div>
           </div>
+
         </div>
 
+        <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Zurück</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Weiter</span>
+        </button>
       </div>
-
-      <!-- Pfeile -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Zurück</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Weiter</span>
-      </button>
     </div>
   </div>
 </section>
 
-<!-- Video -->
 <section id="video" class="py-5">
-  <div class="container text-center">
-    <h3>Unser mobiles Sägewerk in Aktion</h3>
-    <div class="ratio ratio-16x9 mt-3">
-      <video id="sawVideo" controls>
-        <source src="images/videos/saege-im-einsatz.mp4" type="video/mp4">
-        Ihr Browser unterstützt das Video-Tag nicht.
-      </video>
+  <div class="container">
+    <div class="section-bg text-center">
+      <h3 style="color: var(--secondary-orange);">Unser mobiles Sägewerk in Aktion</h3>
+      <div class="ratio ratio-16x9 mt-3">
+        <video id="sawVideo" controls style="border-radius: 8px; border: 3px solid var(--secondary-orange);">
+          <source src="images/videos/saege-im-einsatz.mp4" type="video/mp4">
+          Ihr Browser unterstützt das Video-Tag nicht.
+        </video>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Kontakt -->
 <section id="contact" class="py-5">
   <div class="container">
-    <h3>Kontakt</h3>
-    <ul>
-      <li>Telefon: <strong>+49 170 1234567</strong></li>
-      <li>E-Mail: <strong><a href="mailto:info@saegewerk-mustermann.de">info@saegewerk-mustermann.de</a></strong></li>
-      <li>Standort: Musterstraße 1, 12345 Musterstadt</li>
-    </ul>
-    <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="mt-3">
-      <input type="hidden" name="form-name" value="contact">
-      <div class="mb-2"><input class="form-control" name="name" placeholder="Ihr Name" required></div>
-      <div class="mb-2"><input class="form-control" name="email" type="email" placeholder="E-Mail" required></div>
-      <div class="mb-2"><textarea class="form-control" name="message" rows="4" placeholder="Nachricht" required></textarea></div>
-      <div data-netlify-recaptcha="true"></div>
-      <button class="btn btn-primary" type="submit">Nachricht senden</button>
-    </form>
+    <div class="section-bg">
+      <h3 style="color: var(--secondary-orange);">Kontakt</h3>
+      
+      <div class="contact-info">
+        <ul class="list-unstyled mb-0">
+          <li><strong>Telefon:</strong> +49 157 84814480</li>
+          <li><strong>E-Mail:</strong> <a href="mailto:matthiasramm@gmx.de" style="color: #fff;">matthiasramm@gmx.de</a></li>
+          <li><strong>Standort:</strong> Waldstraße 15a, 02708 Ottenhain</li>
+        </ul>
+      </div>
+
+      <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="mt-3" onsubmit="return validateConsent()">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="mb-3">
+          <input class="form-control" name="name" placeholder="Ihr Name" required>
+        </div>
+        <div class="mb-3">
+          <input class="form-control" name="email" type="email" placeholder="E-Mail" required>
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" name="message" rows="4" placeholder="Nachricht" required></textarea>
+        </div>
+        
+        <div class="alert" style="background-color: rgba(193, 121, 64, 0.2); border: 1px solid var(--secondary-orange); color: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+          <small>
+            <strong>Hinweis zum Datenschutz:</strong> Mit dem Absenden dieses Formulars stimmen Sie der Verarbeitung 
+            Ihrer Daten gemäß unserer <a href="#" onclick="showDatenschutz(); return false;" style="color: var(--secondary-orange); text-decoration: underline;">Datenschutzerklärung</a> zu. 
+            Ihre Daten werden zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben. 
+            Das Formular nutzt Google reCAPTCHA zum Schutz vor Spam.
+          </small>
+        </div>
+
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="consentCheck" required style="cursor: pointer;">
+          <label class="form-check-label" for="consentCheck" style="cursor: pointer; font-size: 0.95rem;">
+            Ich habe die <a href="#" onclick="showDatenschutz(); return false;" style="color: var(--secondary-orange);">Datenschutzerklärung</a> 
+            zur Kenntnis genommen und stimme der Verarbeitung meiner Daten sowie der Nutzung von Google reCAPTCHA zu.*
+          </label>
+        </div>
+
+        <div data-netlify-recaptcha="true"></div>
+        <button class="btn btn-primary" type="submit">Nachricht senden</button>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #ccc;">* Pflichtfeld</p>
+      </form>
+    </div>
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
-  <div class="container d-flex justify-content-between small">
-    <div>© <span id="year"></span> Mobiles Sägewerk Mustermann</div>
-    <div>Webseite mit ❤️ erstellt</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="mb-0">© <span id="year"></span> Sägenhaft - Mobiles Sägewerk Matthias Ramm</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <a href="#" onclick="showImpressum(); return false;" class="text-white text-decoration-none me-3">Impressum</a>
+        <a href="#" onclick="showDatenschutz(); return false;" class="text-white text-decoration-none">Datenschutz</a>
+      </div>
+    </div>
   </div>
 </footer>
+
+<!-- Modal für Impressum und Datenschutz -->
+<div id="legalModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; overflow-y:auto;">
+  <div class="container py-5">
+    <div class="section-bg" style="max-width: 800px; margin: 0 auto; position: relative;">
+      <button onclick="closeLegalModal()" style="position:absolute; top:1rem; right:1rem; background:var(--secondary-orange); border:none; color:#fff; padding:0.5rem 1rem; border-radius:5px; cursor:pointer; font-weight:700;">✕ Schließen</button>
+      <div id="legalContent"></div>
+    </div>
+  </div>
+</div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
   const video = document.getElementById('sawVideo');
-  video.volume = 0.3;
+  if (video) video.volume = 0.3;
+
+  function showImpressum() {
+    const content = `
+      <h3 style="color: var(--secondary-orange); margin-bottom: 2rem;">Impressum</h3>
+      
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">Angaben gemäß § 5 TMG</h5>
+      <p>
+        Matthias Ramm<br>
+        Mobiles Sägewerk<br>
+        Waldstraße 15a<br>
+        02708 Ottenhain
+      </p>
+
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">Kontakt</h5>
+      <p>
+        Telefon: +49 157 84814480<br>
+        E-Mail: matthiasramm@gmx.de
+      </p>
+
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">Umsatzsteuer-ID</h5>
+      <p>
+        Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz:<br>
+        [Bitte ergänzen, falls vorhanden]
+      </p>
+
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h5>
+      <p>
+        Matthias Ramm<br>
+        Waldstraße 15a<br>
+        02708 Ottenhain
+      </p>
+
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">Haftungsausschluss</h5>
+      
+      <h6 style="color: #ffd700; margin-top: 1rem;">Haftung für Inhalte</h6>
+      <p style="font-size: 0.9rem;">
+        Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, 
+        Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. 
+        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten 
+        nach den allgemeinen Gesetzen verantwortlich.
+      </p>
+
+      <h6 style="color: #ffd700; margin-top: 1rem;">Haftung für Links</h6>
+      <p style="font-size: 0.9rem;">
+        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen 
+        Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. 
+        Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der 
+        Seiten verantwortlich.
+      </p>
+
+      <h6 style="color: #ffd700; margin-top: 1rem;">Urheberrecht</h6>
+      <p style="font-size: 0.9rem;">
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen 
+        dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art 
+        der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen 
+        Zustimmung des jeweiligen Autors bzw. Erstellers.
+      </p>
+    `;
+    document.getElementById('legalContent').innerHTML = content;
+    document.getElementById('legalModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function showDatenschutz() {
+    const content = `
+      <h3 style="color: var(--secondary-orange); margin-bottom: 2rem;">Datenschutzerklärung</h3>
+      
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">1. Datenschutz auf einen Blick</h5>
+      
+      <h6 style="color: #ffd700; margin-top: 1rem;">Allgemeine Hinweise</h6>
+      <p style="font-size: 0.9rem;">
+        Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen 
+        Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit 
+        denen Sie persönlich identifiziert werden können.
+      </p>
+
+      <h6 style="color: #ffd700; margin-top: 1rem;">Datenerfassung auf dieser Website</h6>
+      <p style="font-size: 0.9rem;">
+        <strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong><br>
+        Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten 
+        können Sie dem Impressum dieser Website entnehmen.
+      </p>
+
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">2. Hosting</h5>
+      <p style="font-size: 0.9rem;">
+        Diese Website wird bei Netlify gehostet. Anbieter ist die Netlify, Inc., 
+        2325 3rd Street, Suite 296, San Francisco, California 94107, USA.
+      </p>
+
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">3. Kontaktformular</h5>
+      <p style="font-size: 0.9rem;">
+        Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem 
+        Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung 
+        der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben 
+        wir nicht ohne Ihre Einwilligung weiter.
+      </p>
+
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">4. Google reCAPTCHA</h5>
+      <p style="font-size: 0.9rem;">
+        Wir nutzen "Google reCAPTCHA" (im Folgenden "reCAPTCHA") auf dieser Website. Anbieter ist die 
+        Google Ireland Limited ("Google"), Gordon House, Barrow Street, Dublin 4, Irland.
+      </p>
+      <p style="font-size: 0.9rem;">
+        Mit reCAPTCHA soll überprüft werden, ob die Dateneingabe auf dieser Website (z. B. in einem 
+        Kontaktformular) durch einen Menschen oder durch ein automatisiertes Programm erfolgt.
+      </p>
+
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">5. Ihre Rechte</h5>
+      <p style="font-size: 0.9rem;">
+        Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen 
+        Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf 
+        Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene 
+        Daten können Sie sich jederzeit an uns wenden.
+      </p>
+
+      <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">6. SSL- bzw. TLS-Verschlüsselung</h5>
+      <p style="font-size: 0.9rem;">
+        Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine 
+        SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die 
+        Adresszeile des Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer 
+        Browserzeile.
+      </p>
+
+      <p style="font-size: 0.9rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--secondary-orange);">
+        <em>Stand: Oktober 2025</em>
+      </p>
+    `;
+    document.getElementById('legalContent').innerHTML = content;
+    document.getElementById('legalModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLegalModal() {
+    document.getElementById('legalModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  // Modal schließen bei Klick außerhalb
+  document.getElementById('legalModal')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeLegalModal();
+    }
+  });
+
+  // Modal schließen mit ESC-Taste
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLegalModal();
+    }
+  });
+
+  // Formular-Validierung für Consent
+  function validateConsent() {
+    const consentCheck = document.getElementById('consentCheck');
+    if (!consentCheck.checked) {
+      alert('Bitte bestätigen Sie die Datenschutzerklärung, um das Formular abzusenden.');
+      return false;
+    }
+    return true;
+  }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
