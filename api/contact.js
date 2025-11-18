@@ -51,7 +51,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'Kontaktformular <onboarding@resend.dev>', // Später ändern zu: 'Kontaktformular <noreply@deine-domain.de>'
-        to: 'matthiasramm@gmx.de',
+        to: ['matthiasramm@gmx.de','mittelstaedt.marcel@web.de'],
         reply_to: email, // Antworten gehen direkt an den Absender
         subject: `Neue Anfrage von ${name}`,
         html: `
