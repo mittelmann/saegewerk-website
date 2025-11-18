@@ -154,6 +154,12 @@
       transform: scale(1.05);
     }
 
+    .btn-primary:disabled {
+      background: #999;
+      transform: none;
+      cursor: not-allowed;
+    }
+
     .btn-outline-secondary {
       border: 2px solid #fff;
       color: #fff;
@@ -215,6 +221,47 @@
         font-size: 1rem;
       }
     }
+    
+    .g-recaptcha {
+      transform: scale(0.77);
+      transform-origin: 0 0;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 576px) {
+      .g-recaptcha {
+        transform: scale(1);
+      }
+    }
+
+    #contact .section-bg {
+      overflow-x: hidden;
+    }
+
+    .alert {
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    .alert-success {
+      background-color: rgba(40, 167, 69, 0.2);
+      border: 1px solid #28a745;
+      color: #fff;
+    }
+
+    .alert-danger {
+      background-color: rgba(220, 53, 69, 0.2);
+      border: 1px solid #dc3545;
+      color: #fff;
+    }
+
+    .alert-warning {
+      background-color: rgba(255, 193, 7, 0.2);
+      border: 1px solid #ffc107;
+      color: #fff;
+    }
+
   </style>
 </head>
 
@@ -226,7 +273,7 @@
     <h2 class="brand-subtitle">MOBILES SÄGEWERK</h2>
     <p class="brand-tagline">Verkauf & Holzschnitt vor Ort</p>
     <p class="mt-3 mb-2">Tel.: 0157-848144480</p>
-    <p class="mb-0">Matthias Ramm - 02708 Ottenhain - Waldstraße 15a</p>
+    <p class="mb-0">Matthias Ramm - 02708 Kottmar OT Ottenhain - Waldstraße 15a</p>
   </div>
 </header>
 
@@ -256,7 +303,7 @@
     <div class="section-bg">
       <h3 class="mb-4" style="color: var(--secondary-orange);">Über mich</h3>
       <p class="lead">
-        Ich bin gelernter Tischler mit über 20 Jahren Erfahrung im Holzhandwerk. 
+        Ich bin gelernter Tischler mit über 40 Jahren Erfahrung im Holzhandwerk. 
         Vor fünf Jahren habe ich mir mit meinem mobilen Sägewerk einen Traum erfüllt: 
         Holz dort zu verarbeiten, wo es wächst.
       </p>
@@ -285,7 +332,7 @@
               <li>Maximale Länge: <strong>10,5 m</strong></li>
               <li>Schnell, zuverlässig und direkt bei Ihnen</li>
             </ul>
-            <p class="price-highlight">Stundenlohn: 52 € zzgl. Spesen</p>
+            <p class="price-highlight">Stundenlohn: 52 € zzgl. Anfahrt & Bänder</p>
           </div>
         </div>
       </div>
@@ -310,12 +357,15 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">Brennholzverkauf</h5>
             <p class="card-text">
-              Hochwertiges Fichten-Feuerholz, Scheitlänge 1 Meter.
+              Hochwertiges Feuerholz, Fichten- und Harthölzer, Scheitlänge 1 Meter.
+            </p>
+            <p class="card-text">
+              Gebündelt und Gestapelt
             </p>
             <p class="card-text">
               Anlieferung nach Absprache möglich.
             </p>
-            <p class="price-highlight">Preis: 75 € pro laufendem Meter</p>
+            <p class="price-highlight">ab 75 € pro Festmeter</p>
           </div>
         </div>
       </div>
@@ -415,20 +465,19 @@
         <ul class="list-unstyled mb-0">
           <li><strong>Telefon:</strong> +49 157 84814480</li>
           <li><strong>E-Mail:</strong> <a href="mailto:matthiasramm@gmx.de" style="color: #fff;">matthiasramm@gmx.de</a></li>
-          <li><strong>Standort:</strong> Waldstraße 15a, 02708 Ottenhain</li>
+          <li><strong>Standort:</strong> Waldstraße 15a, 02708 Kottmar OT Ottenhain</li>
         </ul>
       </div>
 
-      <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true" class="mt-3" onsubmit="return validateConsent()">
-        <input type="hidden" name="form-name" value="contact">
+      <form id="contactForm" class="mt-3" onsubmit="handleSubmit(event)">
         <div class="mb-3">
-          <input class="form-control" name="name" placeholder="Ihr Name" required>
+          <input class="form-control" name="name" id="name" placeholder="Ihr Name" required>
         </div>
         <div class="mb-3">
-          <input class="form-control" name="email" type="email" placeholder="E-Mail" required>
+          <input class="form-control" name="email" id="email" type="email" placeholder="E-Mail" required>
         </div>
         <div class="mb-3">
-          <textarea class="form-control" name="message" rows="4" placeholder="Nachricht" required></textarea>
+          <textarea class="form-control" name="message" id="message" rows="4" placeholder="Nachricht" required></textarea>
         </div>
         
         <div class="alert" style="background-color: rgba(193, 121, 64, 0.2); border: 1px solid var(--secondary-orange); color: #fff; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
@@ -448,9 +497,14 @@
           </label>
         </div>
 
-        <div data-netlify-recaptcha="true"></div>
-        <button class="btn btn-primary" type="submit">Nachricht senden</button>
+        <div class="g-recaptcha" data-sitekey="DEIN_RECAPTCHA_SITE_KEY"></div>
+        
+        <button class="btn btn-primary" type="submit" id="submitBtn">
+          Nachricht senden
+        </button>
         <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #ccc;">* Pflichtfeld</p>
+        
+        <div id="formMessage"></div>
       </form>
     </div>
   </div>
@@ -485,6 +539,66 @@
   const video = document.getElementById('sawVideo');
   if (video) video.volume = 0.3;
 
+  // Kontaktformular Handler
+  async function handleSubmit(event) {
+    event.preventDefault();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
+    const consentCheck = document.getElementById('consentCheck');
+    
+    if (!consentCheck.checked) {
+      formMessage.innerHTML = '<div class="alert alert-warning">⚠️ Bitte bestätigen Sie die Datenschutzerklärung.</div>';
+      return;
+    }
+
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+      formMessage.innerHTML = '<div class="alert alert-warning">⚠️ Bitte bestätigen Sie das reCAPTCHA.</div>';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '📤 Wird gesendet...';
+    formMessage.innerHTML = '';
+
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value,
+      'g-recaptcha-response': recaptchaResponse
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        formMessage.innerHTML = '<div class="alert alert-success">✓ Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir melden uns in Kürze bei Ihnen.</div>';
+        document.getElementById('contactForm').reset();
+        grecaptcha.reset();
+        
+        // Scroll zur Erfolgsmeldung
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        formMessage.innerHTML = `<div class="alert alert-danger">✗ Fehler: ${data.error || 'Nachricht konnte nicht gesendet werden.'}</div>`;
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      formMessage.innerHTML = '<div class="alert alert-danger">✗ Ein Verbindungsfehler ist aufgetreten. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per Telefon: 0157-848144480</div>';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Nachricht senden';
+    }
+  }
+
   function showImpressum() {
     const content = `
       <h3 style="color: var(--secondary-orange); margin-bottom: 2rem;">Impressum</h3>
@@ -494,7 +608,7 @@
         Matthias Ramm<br>
         Mobiles Sägewerk<br>
         Waldstraße 15a<br>
-        02708 Ottenhain
+        02708 Kottmar OT Ottenhain
       </p>
 
       <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">Kontakt</h5>
@@ -506,14 +620,14 @@
       <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">Umsatzsteuer-ID</h5>
       <p>
         Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz:<br>
-        [Bitte ergänzen, falls vorhanden]
+        208/260/01551
       </p>
 
       <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h5>
       <p>
         Matthias Ramm<br>
         Waldstraße 15a<br>
-        02708 Ottenhain
+        02708 Kottmar OT Ottenhain
       </p>
 
       <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">Haftungsausschluss</h5>
@@ -569,8 +683,8 @@
 
       <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">2. Hosting</h5>
       <p style="font-size: 0.9rem;">
-        Diese Website wird bei Netlify gehostet. Anbieter ist die Netlify, Inc., 
-        2325 3rd Street, Suite 296, San Francisco, California 94107, USA.
+        Diese Website wird bei Vercel gehostet. Anbieter ist Vercel Inc., 340 S Lemon Ave #4133, 
+        Walnut, CA 91789, USA.
       </p>
 
       <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">3. Kontaktformular</h5>
@@ -580,6 +694,10 @@
         der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben 
         wir nicht ohne Ihre Einwilligung weiter.
       </p>
+      <p style="font-size: 0.9rem;">
+        Für den Versand der E-Mails nutzen wir den Dienst Resend (Resend, Inc., USA). Die über das 
+        Kontaktformular übermittelten Daten werden über diesen Dienst verarbeitet und an uns weitergeleitet.
+      </p>
 
       <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">4. Google reCAPTCHA</h5>
       <p style="font-size: 0.9rem;">
@@ -588,7 +706,8 @@
       </p>
       <p style="font-size: 0.9rem;">
         Mit reCAPTCHA soll überprüft werden, ob die Dateneingabe auf dieser Website (z. B. in einem 
-        Kontaktformular) durch einen Menschen oder durch ein automatisiertes Programm erfolgt.
+        Kontaktformular) durch einen Menschen oder durch ein automatisiertes Programm erfolgt. Hierzu 
+        analysiert reCAPTCHA das Verhalten des Websitebesuchers anhand verschiedener Merkmale.
       </p>
 
       <h5 style="color: var(--secondary-orange); margin-top: 1.5rem;">5. Ihre Rechte</h5>
@@ -608,7 +727,7 @@
       </p>
 
       <p style="font-size: 0.9rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--secondary-orange);">
-        <em>Stand: Oktober 2025</em>
+        <em>Stand: November 2025</em>
       </p>
     `;
     document.getElementById('legalContent').innerHTML = content;
@@ -634,17 +753,8 @@
       closeLegalModal();
     }
   });
-
-  // Formular-Validierung für Consent
-  function validateConsent() {
-    const consentCheck = document.getElementById('consentCheck');
-    if (!consentCheck.checked) {
-      alert('Bitte bestätigen Sie die Datenschutzerklärung, um das Formular abzusenden.');
-      return false;
-    }
-    return true;
-  }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
